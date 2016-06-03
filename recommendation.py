@@ -8,7 +8,7 @@ from db.orm import fetch_user_and_movie_and_interest
 from myredis import myredis
 
 
-K = 8
+K = 6
 
 
 def split_data(data, M, k, seed):
@@ -118,6 +118,10 @@ def recommend(user_id):
             rank[j]['reason'].append(i)
 
     return sorted(rank.iteritems(), key=lambda x: x[1]['value'], reverse=True)
+    # rec_movies = sorted(rank.iteritems(), key=lambda x: x[1]['value'], reverse=True)
+    # for movie in rec_movies:
+    #     print 'recommend: %s' % movie[0].encode('utf-8')
+    #     print 'reason: %s' % ' '.join([m.encode('utf-8') for m in movie[1]['reason']])
 
 
 if __name__ == '__main__':

@@ -12,5 +12,5 @@ if __name__ == '__main__':
     W = item_similarity(compond_movie(data_set))
     for movie, related_movies in W.items():
         myredis.set(movie, json.dumps(related_movies))
-        myredis.expire(movie, 300)
+        myredis.expire(movie, 3600)
         del W[movie]
